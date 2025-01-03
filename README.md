@@ -1,7 +1,7 @@
 # web-api-server-tutorial
 Tutorial for Web API Server
 
-Part #1: Get Started \
+Part #1: [Get Started](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%231%20Get%20Started.md) \
 Part #2: Configure Settings \
 Part #3.0: How Does the Project Work? \
 Part #3.1: What is SimpleResponse? \
