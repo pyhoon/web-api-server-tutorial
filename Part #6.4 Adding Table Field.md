@@ -1,19 +1,15 @@
 # Part #6.4: Adding Table Field
-
-This is a guide to add an Integer field for "opening stock" in table tbl_products.
-
-In this example, we make it compulsory to supply the value during Add new product in index page.
+1. This is a guide to add an Integer field for "opening stock" in table tbl_products.
+2. In this example, we make it compulsory to supply the value during Add new product in index page.
 
 ## Modify Product Table
-Go to CreateDatabase sub in Main module.
-
-We need to add the following code
+1. Go to CreateDatabase sub in Main module.
+2. We need to add the following code
 ```B4X
 MDB.Columns.Add(MDB.CreateORMColumn2(CreateMap("Name": "opening_stock", "Type": MDB.INTEGER, "Default": "0")))
 ```
-Here we are adding a column of type integer and default the value to 0.
-
-Now the code will look like the following:
+3. Here we are adding a column of type integer and default the value to 0.
+4. Now the code will look like the following:
 ```B4X
 MDB.Table = "tbl_products"
 MDB.Columns.Add(MDB.CreateORMColumn2(CreateMap("Name": "category_id", "Type": MDB.INTEGER)))
@@ -24,16 +20,14 @@ MDB.Columns.Add(MDB.CreateORMColumn2(CreateMap("Name": "opening_stock", "Type": 
 MDB.Foreign("category_id", "id", "tbl_categories", "", "")
 MDB.Create
 ```
-Next, we open ProductsApiHandler class to modify the code for POST and PUT endpoints. \
-In PostProduct sub we update the #Body comment to accept a new item with key "stock".
+5. Next, we open ProductsApiHandler class to modify the code for POST and PUT endpoints.
+6. In ```PostProduct``` sub we update the #Body comment to accept a new item with key "stock".
 ```B4X
 ' #Body = {<br>&nbsp;"cat_id": category_id,<br>&nbsp;"code": "product_code",<br>&nbsp;"name": "product_name",<br>&nbsp;"price": product_price,<br>&nbsp;"stock": 0<br>}
 ```
-This item will be map to our column "opening_stock".
-
-*Spoiler
-
-We add a code to check the "stock" key in request body or json payload and replace it with the correct table column.
+7. This item will be map to our column "opening_stock". \
+   ![Spoiler](#)
+8. We add a code to check the "stock" key in request body or json payload and replace it with the correct table column.
 ```B4X
 If data.ContainsKey("stock") Then
     data.Put("opening_stock", data.Get("stock"))
@@ -41,9 +35,9 @@ If data.ContainsKey("stock") Then
 End If
 ```
 
-*Spoiler
+![Spoiler](#)
 
-Add the column as required keys.
+9. Add the column as required keys.
 ```B4X
 ' Check whether required keys are provided
 Dim RequiredKeys As List = Array As String("category_id", "product_code", "product_name", "opening_stock") ' "product_price" is optional
@@ -57,9 +51,9 @@ For Each requiredkey As String In RequiredKeys
 Next
 ```
 
-*Spoiler
+![Spoiler](#)
 
-Add new column to the Columns array of MiniORM.
+10. Add new column to the Columns array of MiniORM.
 ```B4X
 ' Insert new row
 DB.Reset
@@ -77,7 +71,7 @@ data.GetDefault("opening_stock", 0), _
 data.GetDefault("created_date", WebApiUtils.CurrentDateTime))
 DB.Save
 ```
-Similarly in PutProductById sub. The completed code should look like the following.
+11. Similarly in ```PutProductById``` sub. The completed code should look like the following.
 ```B4X
 Private Sub PutProductById (Id As Int)
     ' #Desc = Update Product by id
@@ -158,91 +152,85 @@ Private Sub PutProductById (Id As Int)
     DB.Close
 End Sub
 ```
-
-Backend API is done. Now we go to front end.
+12. Backend API is done. Now we go to front end.
 
 ## Modify the Front End
-Open the Files folder of the project with a text editor.
+1. Open the Files folder of the project with a text editor.
+2. Open the index.html file.
+3. We will focus on the modal form for "new" and "edit".
+   
+![Spoiler](#)
 
-Open the index.html file.
+4. We can copy the code for price and replace the word "price" to "stock".
 
-We will focus on the modal form for "new" and "edit".
+![Spoiler](#)
 
-*Spoiler
+5. We also copy this code for "edit" but we need to change the id to "stock1" because the id must be unique.
 
-We can copy the code for price and replace the word "price" to "stock".
+![Spoiler](#)
 
-*Spoiler
-We also copy this code for "edit" but we need to change the id to "stock1" because the id must be unique.
+6. Now we move on to the JavaScript part.
+7. Because this template supports 3 types of JSON output as set in SimpleResponse, 3 different JS files are used.
+8. If you are using the default, the server will load the search.simple.js file when loading index.html page.
 
-*Spoiler
+![Spoiler](#)
 
-Now we move on to the JavaScript part.
+9. The code for jQuery Validate is currently checking for product code and product name which are set as compulsory.
+10. Category id is not checked because it is from drop down list, user must select an item.
+11. Product Price also not checked because we let it as not compulsory. If user did not enter anything to input box then the value is default to 0.
+12. Now we will add a code to validate user input to enter "opening stock".
 
-Because this template supports 3 types of JSON output as set in SimpleResponse, 3 different JS files are used.
+![Spoiler](#)
 
-If you are using the default, the server will load the search.simple.js file when loading index.html page.
+13. This step is optional if you don't want to set it as compulsory or required field.
+14. We will leave the #update part as not compulsory for "opening stock" field.
+15. Next, we write the code for displaying the search result table.
+16. Find the code for #btnsearch click.
 
-*Spoiler
+![Spoiler](#)
 
-The code for jQuery Validate is currently checking for product code and product name which are set as compulsory.
-
-Category id is not checked because it is from drop down list, user must select an item.
-
-Product Price also not checked because we let it as not compulsory. If user did not enter anything to input box then the value is default to 0.
-
-Now we will add a code to validate user input to enter "opening stock".
-
-*Spoiler
-
-This step is optional if you don't want to set it as compulsory or required field.
-
-We will leave the #update part as not compulsory for "opening stock" field.
-
-Next, we write the code for displaying the search result table.
-
-Find the code for #btnsearch click.
-
-*Spoiler
-
-We need to add a new column "Stock" after "Price" to the html table header.
-```B4X
+17. We need to add a new column "Stock" after "Price" to the html table header. \
+    JavaScript:
+```JavaScript
 tbl_head = "<thead class=\"bg-light\"><th style=\"text-align: right; width: 60px\">#</th><th>Code</th><th>Category</th><th>Name</th><th style=\"text-align: right\">Price</th><th style=\"text-align: right\">Stock</th><th style=\"width: 90px\">Actions</th></thead>"
 ```
-Then we add new variables for the column and value.
+18. Then we add new variables for the column and value.
+    
+![Spoiler](#)
 
-*Spoiler
+19. Add the following code to assign the value to table cell and temporary variable stock.
+    
+![Spoiler](#)
 
-Add the following code to assign the value to table cell and temporary variable stock.
-
-*Spoiler
-
-Add the temporary variable for stock to col_edit so it can pass the data to the modal form when edit button is clicked.
+20. Add the temporary variable for stock to col_edit so it can pass the data to the modal form when edit button is clicked. \
+JavaScript:
 ```JavaScript
 col_edit = "<td><a href=\"#edit\" class=\"text-primary mx-2\" data-toggle=\"modal\"><i class=\"edit fa fa-pen\" data-toggle=\"tooltip\" data-id=\"" + id + "\" data-code=\"" + code + "\" data-category=\"" + catid + "\" data-name=\"" + name + "\" data-price=\"" + price + "\" data-stock=\"" + stock + "\" title=\"Edit\"></i></a> <a href=\"#delete\" class=\"text-danger mx-2\" data-toggle=\"modal\"><i class=\"delete fa fa-trash\" data-toggle=\"tooltip\" data-id=\"" + id + "\" data-code=\"" + code + "\" data-category=\"" + catid + "\" data-name=\"" + name + "\" title=\"Delete\"></i></a></td>"
 ```
-*Spoiler
-Then add col_stock to tbl_body.
+
+![Spoiler](#)
+
+21. Then add col_stock to tbl_body. \
+JavaScript:
 ```JavaScript
 tbl_body += "<tr>" + col_id + col_code + col_category + col_name + col_price + col_stock + col_edit + "</tr>"
 ```
-*Spoiler
 
-We also need to update the click event for the inline edit button.
+![Spoiler](#)
 
-This is to load the value from result table into the edit modal form.
+22. We also need to update the click event for the inline edit button.
+23. This is to load the value from result table into the edit modal form.
 
-*Spoiler
+![Spoiler](#)
 
-The search button code is done but there is a function to load the table when the page loads without clicking on button search.
+24. The search button code is done but there is a function to load the table when the page loads without clicking on button search.
+25. There is a function using GET request to get all the rows by default using $.getJSON("/api/find") ajax call.
+    
+![Spoiler](#)
 
-There is a function using GET request to get all the rows by default using $.getJSON("/api/find") ajax call.
-
-*Spoiler
-
-This part will be almost the same for the #btnSearch.
-
-The updated script will look like the following.
+26. This part will be almost the same for the #btnSearch.
+27. The updated script will look like the following. \
+JavaScript:
 ```JavaScript
   $.getJSON("/api/find", function (response) {
     var tbl_head = ""
@@ -304,6 +292,6 @@ The updated script will look like the following.
   })
 })
 ```
-That's all now. Delete the sqlite database file and run the project again in debug.
+28. Delete the sqlite database file and run the project again in debug.
 
-*Spoiler
+![Spoiler](#)
