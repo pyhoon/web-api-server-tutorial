@@ -92,4 +92,4 @@ For this demo, it is set to return a simple response and it doesn't support text
 
 You need to set Simple Response to False in server configuration to return code 201 response for your client apps.
 
-[Next tutorial: Part #2 Configure Settings](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%232%20Configure%20Settings.md)
+Next tutorial: [Part #2 Configure Settings](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%232%20Configure%20Settings.md)
