@@ -10,5 +10,5 @@ Part #5: [Using Code Snippets](https://github.com/pyhoon/web-api-server-tutorial
 Part #6.0: [Getting Started with MiniORMUtils](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%236.0%20Getting%20Started%20with%20MiniORMUtils.md) \
 Part #6.1: [Declaring MiniORM in Server Handler](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%236.1%20Declaring%20MiniORM%20in%20Server%20Handler.md) \
 Part #6.2: Examples of API Endpoints \
-Part #6.3: Adding New Table \
-Part #6.4: Adding a New Field
+Part #6.3: Adding Database Table \
+Part #6.4: Adding Table Field
