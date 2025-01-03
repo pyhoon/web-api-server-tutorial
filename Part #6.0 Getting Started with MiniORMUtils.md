@@ -1,4 +1,4 @@
-# Part #6.0 Getting Started with MiniORMUtils
+# Part #6.0: Getting Started with MiniORMUtils
 1. At the time of writing, MiniORMUtils is version 1.14 and Web API Server 3 is version 3.00.
 2. MiniORMUtils support SQLite and MySQL databases.
 3. We don't need to write different SQL queries to work with SQLite and later migrate to MySQL.
