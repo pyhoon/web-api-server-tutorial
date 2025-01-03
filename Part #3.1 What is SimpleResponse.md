@@ -144,12 +144,14 @@ Config.SimpleResponse.DataKey = "result"
 ## Conclusion
 
 1. There are 4 types of output for SimpleResponse:
+   
 | Enable | Format	| Return data |
 | :----: | :----: | :--- |
 | False | (Fixed) | object with r data always an array |
 | True | Auto (default) | depends whether we initialize object or data |
 | True | Map | always as object (with optional customize key name) |
 | True | List |	always as array |
+
 3. It depends on your use case which type is suitable.
 4. You can build more complex JSON response by nesting the objects and arrays.
 
