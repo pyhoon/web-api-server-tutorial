@@ -2,7 +2,7 @@
 Tutorial for Web API Server
 
 Part #1: [Get Started](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%231%20Get%20Started.md) \
-Part #2: Configure Settings \
+Part #2: [Configure Settings](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%232%20Configure%20Settings.md) \
 Part #3.0: How Does the Project Work? \
 Part #3.1: What is SimpleResponse? \
 Part #4: Server Handlers \
