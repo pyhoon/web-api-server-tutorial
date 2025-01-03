@@ -152,7 +152,7 @@ Config.SimpleResponse.DataKey = "result"
 | True | Map | always as object (with optional customize key name) |
 | True | List |	always as array |
 
-3. It depends on your use case which type is suitable.
-4. You can build more complex JSON response by nesting the objects and arrays.
+2. It depends on your use case which type is suitable.
+3. You can build more complex JSON response by nesting the objects and arrays.
 
 Next tutorial: [Part #4 Server Handlers](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%234%20Server%20Handlers.md)
