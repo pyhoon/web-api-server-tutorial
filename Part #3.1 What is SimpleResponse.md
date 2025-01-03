@@ -153,4 +153,4 @@ Config.SimpleResponse.DataKey = "result"
 3. It depends on your use case which type is suitable.
 4. You can build more complex JSON response by nesting the objects and arrays.
 
-Next tutorial: [Part #4: Server Handlers](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%234%20Server%20Handlers.md)
+Next tutorial: [Part #4 Server Handlers](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%234%20Server%20Handlers.md)
