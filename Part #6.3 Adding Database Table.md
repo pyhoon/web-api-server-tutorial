@@ -1,4 +1,4 @@
-# Part #6.3: Adding New Table
+# Part #6.3: Adding Database Table
 
 Often time we need to add a new table after the database is created. \
 To do it, we need to check whether a table is exist then we create the table. \
