@@ -1,6 +1,6 @@
-# Part #6.4: Adding a New Field
+# Part #6.4: Adding Table Field
 
-This is a guide to add an Integer field for "opening stock".
+This is a guide to add an Integer field for "opening stock" in table tbl_products.
 
 In this example, we make it compulsory to supply the value during Add new product in index page.
 
