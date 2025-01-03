@@ -12,7 +12,7 @@ It is recommended to use this template with **MiniORMUtils.b4xlib (v1.14)** whic
 
 You can put this library inside B4X Additional Libraries folder since it is a cross platform library.
 
-Note: You can also use MinimaListUtils library or write your own SQL code using jSQL library.
+*Note: You can also use MinimaListUtils library or write your own SQL code using jSQL library.*
 
 By default the template is based on SQLite database as backend.
 
