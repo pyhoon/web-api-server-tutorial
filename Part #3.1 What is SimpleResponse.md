@@ -4,8 +4,8 @@ This tutorial is extended from [Part #3.0: How Does the Project Work?](https://g
 
 ## SimpleResponse.Enable = False
 
-1. By default, a predefined structure is return when using ReturnHttpResponse sub of WebApiUtils to output the JSON response.
-2. I recommend to use the default because it covers the response status code, message and error message without the need to worry whether the response should be an array or object. The response data is always returned as an array (list). \
+1. By default, a custom structure is return when using ReturnHttpResponse sub of WebApiUtils to output the JSON response.
+2. I recommend to use the default because the custom format covers the response status (s) and code (a), message (m) and error (e) without the need to worry whether the results (r) should be an array or object. The complete json is returned as an object and the result we are interested to is always returned as an array (list). \
 Here is an example of the output: \
 JSON:
 ```JSON
@@ -28,8 +28,8 @@ JSON:
   "m": "Success"
 }
 ```
-3. You won't notice this format in API documentation because only the response 'r' item is show.
-4. A small label is display below the response box results from the combination of 'a' and 'm' / 'e' items.
+3. The result text area in the API documentation only show the value of **r** key.
+4. An alert label is display below it showing the value of the combination of **a** and **m**/**e** keys.
 5. For details, you can check the JavaScript code of help.js file inside scripts folder of www/assets. \
 JavaScript:
 ```JavaScript
@@ -60,7 +60,7 @@ success: function (data) {
    ```
    *Note: You can comment the code if you want.*
 2. This is the case where you want to create API that follow the structure you want.
-3. When this setting is set to True, the JSON format as showed above is now show with just the 'r' part, exactly as what you see in the Response text area in API documentation page. \
+3. When this setting is set to True, the JSON format as showed above is now show with just the **r** part of the custom format. \
 JSON:
 ```JSON
 {
@@ -147,7 +147,7 @@ Config.SimpleResponse.DataKey = "result"
    
 | Enable | Format	| Return data |
 | :----: | :----: | :--- |
-| False | (Fixed) | object with r data always an array |
+| False | (Custom) | object with r data always an array |
 | True | Auto (default) | depends whether we initialize object or data |
 | True | Map | always as object (with optional customize key name) |
 | True | List |	always as array |
