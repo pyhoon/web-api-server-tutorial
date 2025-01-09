@@ -295,3 +295,5 @@ JavaScript:
 28. Delete the sqlite database file and run the project again in debug.
 
 ![Spoiler](#)
+
+Next tutorial: [Part #6.5 Creating Nested JSON Response](https://github.com/pyhoon/web-api-server-tutorial/blob/main/Part%20%236.5%20Creating%20Nested%20JSON%20Response.md)
