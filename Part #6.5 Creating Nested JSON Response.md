@@ -1,4 +1,4 @@
-# Part #6.5 Creating Nested JSON Response.md
+# Part #6.5 Creating Nested JSON Response
 
 1. Sometimes we want to return a more complex JSON response.
 2. Let say we have 2 categories and each category has its own products associated with it by category_id.
